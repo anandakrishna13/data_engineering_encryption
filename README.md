@@ -47,7 +47,26 @@ Once key generated, Public key needs tobe exported if we need to share this with
 ```
 gpg --export -a ananda@example.com >  public_key.asc
 ```
-Now is this ready to share.
+Now this is ready to share.
+
+Similarly , get the private key
+```
+gpg --export-secret-keys -a "<your_email>" > private_key.asc
+```
+
+Import the public key, in common practice, this happens in different system, where we want to encrypt the file.
+```
+gpg --import <public_key_file>
+```
+Use this command to encrypt any file using the public key,
+ex:
+```
+gpg --recipient ananda@example.com --encrypt sales_data.csv
+```
+
+Encrypted file can be decrypted
+```
+gpg --decrypt sales_data.csv.gpg
 
 
 
